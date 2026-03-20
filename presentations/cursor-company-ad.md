@@ -1,0 +1,236 @@
+---
+theme: seriph
+title: Cursor — Examples from my storywise day-to-day
+info: |
+  Internal talk: real bugs, how we used the tool, and what we’d do again.
+class: text-left
+transition: slide-left
+drawings:
+  persist: false
+comark: true
+duration: 10min
+---
+
+# Cursor on real work
+
+**Examples from my storywise day-to-day**
+
+<!--
+Goal: show what happened in our codebase, not slides from Cursor’s marketing.
+-->
+
+---
+
+## What this talk is
+
+- Cursor applied to **real tickets**
+- A few tips that made the difference
+
+<!--
+Honest section later; Q&A welcome.
+-->
+
+---
+
+# Story 1 — YouTrack export titles
+
+#### What the client sent:
+
+```text
+Ich habe gerade wieder nach youtrack gepusht.
+
+Organisationseinstellungen:
+{abbreviation}: {auto}
+
+Projekteinstellungen:
+{abbreviation}: {oneSentence}
+
+Für das Projekt wurde für User Stories exportiert: {abbreviation}: ({persona}) {action}
+und für Anforderungstexte der Titel. Ich weiß nicht, welches Format bei auto rauskommt,
+aber es wurde offenbar nicht die Einstellung aus dem Projekt verwendet.
+```
+
+**TL;DR**: The export template feature does not work as expected.
+
+---
+
+## The Single Prompt that fixed the issue
+
+```
+<client message>
+
+this is the message from the client.
+
+@common/helper/export.template.helper.ts:15 
+it is probably due to this @common/helper/export.template.helper.ts:76-79 logic.
+```
+
+No magic, just the message + `@` file references + my suspicion.
+
+<!--
+Mention @-mentions if people haven’t used Cursor yet.
+-->
+
+---
+
+## What was wrong
+
+Resolution order was:
+
+```ts
+tenant ?? project ?? default
+```
+
+Project-specific settings should win over tenant defaults:
+
+```ts
+project ?? tenant ?? default
+```
+
+Basically the kind of nasty bug that passed multiple reviews.
+
+<!--
+Nullish coalescing: first non-nullish wins. Tenant "auto" was eating project templates.
+-->
+
+---
+
+## How long it took
+
+| Phase | Roughly |
+|-------|---------|
+| **Finding** the issue | ~2 minutes |
+| **Tests + PR** | ~30 minutes |
+
+**Takeaway:** Try it for buxfixing, it can save you a lot of time.
+
+---
+
+# Story 2 — Epic list page size
+
+Another bug it one-shotted:
+
+Ticket: the page-size control on the epic list didn’t change how many rows actually loaded.
+
+```
+on this component @frontend/src/components/molecules/TablePageButtons.tsx
+
+I have this ticket:
+
+"epic list, this selector (display page size) does not work"  
+
+can you figure out whats wrong
+```
+
+<!--
+Also good to figure out what Simon wrote
+-->
+
+--- 
+
+## What was wrong
+
+`usePagination({})` kept the hook default, `pageSize = 10` instead of using the user preference.
+
+### Also useful for a refactor
+
+```
+@frontend/src/components/organisms/Lists/EntityPermissionList/EntityPermissionList.tsx:39-40 
+
+Why do we need to pass the pageSize everywhere. As we do it basically everywhere, can't we get it inside usePaginationPageSizeSetting and make it overwriteable?
+We could pass the userId or also get that one inside as it should only be used inside a page context...
+```
+
+One shotted as well, just had to fix a lint issue.
+
+---
+
+# Story 3 — Knowledge base (Hard)
+
+A brand new feature for storywise, interacting with Confluence through APIs.
+
+Requirements:
+
+- Brand new Page + Layout
+- Page Tree Component on the left
+- Editor on the right
+- Import/Export functionality from/to Confluence
+
+Simon wanted to mock it, but ended up creating a draft PR for it.
+
+IMMAGINE DELLA KNOWLEDGE BASE
+---
+
+## Did it succeed?
+
+Yes....kind of 😂
+
+The code was mostly working, but it had some problems, like:
+
+- Files were all over the place
+- Using older/wrong components for things
+- UI-wise it was ok, but could be improved a lot
+- It was using `window.confirm` instead of our dialog pattern 😥
+
+It required a lot of work still, but it did save me a bunch of time, especially on the API side.
+
+
+IMMAGINE DI SIMON CHE MI SCARICA LA PR A ME
+
+<!--
+Nothing revolutionary, but still a faily big scope.
+-->
+
+--- 
+
+# How do we use it properly?
+
+<v-clicks>
+
+- **Bugs** — Yes! Always try it first (worst case you waste a few minutes)
+
+  _Remember_: Give it at least a hint of where the problem might be (`@` syntax).
+- **Refactors** — Yes
+
+  Just telling it to `Refactor <this> to <that>` is usually enough, it will save you a lot of time.
+- **New features** — Sure 🤷🏻‍♂️
+
+  It will accomplish the task (small or big), but likely not the way you want it.
+
+  _Tip_: Use Plan mode! So you can see what components/libraries the model wants to use and you can iterate on it much more easily.
+
+  IMAGE OF PLAN MODE?
+</v-clicks>
+
+<!--
+Patterns and design system still need a human check.
+-->
+
+---
+
+## Other tips: Docs beat vague prompts
+
+Giving the model **real material** (e.g. **Tenda AP** manuals / PDFs) works wonders. 
+
+
+## Other tips: Use newer models
+
+**Older or weaker models** on heavy work feel a bit like a brand new **Ember.js** project in 2025
+
+It can work but please don't.
+
+1 year ago is 10 years ago in AI-time.
+
+INTERNET EXPLORER MEME
+
+<!--
+Habits > unstructured prompting.
+-->
+
+---
+
+# Thanks!
+
+<!--
+Optional follow-up: licenses, pairing, internal guidelines — whatever fits the org.
+-->

@@ -1,11 +1,22 @@
 # Welcome to [Slidev](https://github.com/slidevjs/slidev)!
 
-To start the slide show:
+## Setup
 
 - `pnpm install`
-- `pnpm dev`
-- visit <http://localhost:3030>
+- visit <http://localhost:3030> after starting a dev script
 
-Edit the [slides.md](./slides.md) to see the changes.
+## Multiple presentations
 
-Learn more about Slidev at the [documentation](https://sli.dev/).
+Each deck is its own Markdown entry under [`presentations/`](./presentations/).
+
+| Command | Deck |
+|--------|------|
+| `pnpm dev` or `pnpm dev:starter` | [slides.md](./slides.md) (template / playground) |
+| `pnpm dev:cursor-ad` | [Cursor company ad](./presentations/cursor-company-ad.md) — internal pitch from real findings |
+
+Build / PDF export:
+
+- `pnpm build:starter` / `pnpm build:cursor-ad`
+- `pnpm export:starter` / `pnpm export:cursor-ad`
+
+Learn more at the [Slidev documentation](https://sli.dev/).

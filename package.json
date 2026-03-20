@@ -4,8 +4,14 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export"
+    "build:starter": "slidev build slides.md",
+    "build:cursor-ad": "slidev build presentations/cursor-company-ad.md",
+    "dev": "slidev slides.md --open",
+    "dev:starter": "slidev slides.md --open",
+    "dev:cursor-ad": "slidev presentations/cursor-company-ad.md --open",
+    "export": "slidev export",
+    "export:starter": "slidev export slides.md",
+    "export:cursor-ad": "slidev export presentations/cursor-company-ad.md"
   },
   "dependencies": {
     "@slidev/cli": "^52.14.1",
