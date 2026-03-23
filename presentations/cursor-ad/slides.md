@@ -30,10 +30,6 @@ layout: intro
 - Cursor applied to **real tickets**
 - A few tips that made the difference
 
-<!--
-Honest section later; Q&A welcome.
--->
-
 ---
 
 # Story 1 — YouTrack export titles
@@ -98,10 +94,6 @@ project ?? tenant ?? default
 
 Basically the kind of nasty bug that passed multiple reviews.
 
-<!--
-Nullish coalescing: first non-nullish wins. Tenant "auto" was eating project templates.
--->
-
 ---
 
 ## How long it took
@@ -133,8 +125,6 @@ I have this ticket:
 
 can you figure out whats wrong
 ```
-
-
 
 <!--
 Also good to figure out what Simon wrote
@@ -206,11 +196,6 @@ The code was mostly working, but it had some problems, like:
 It required a lot of work still, but it did save me a bunch of time, especially on the API side.
 
 
-
-<!--
-Nothing revolutionary, but still a faily big scope.
--->
-
 ---
 
 # How do we use it properly?
@@ -244,7 +229,6 @@ backgroundSize: 100% auto
 
 Giving the model **real material** (e.g. **Tenda AP** manuals / PDFs) works wonders. 
 
-
 ## Other tips: Use newer models
 
 **Older or weaker models** on heavy work feel a bit like a brand new **Ember.js** project in 2025
@@ -253,9 +237,6 @@ It can work but please don't.
 
 1 year ago in AI-time is ~5 years ago in conventional time.
 
-<!--
-Habits > unstructured prompting.
--->
 
 ---
 layout: end
@@ -263,6 +244,4 @@ layout: end
 
 # Thanks!
 
-<!--
-Optional follow-up: licenses, pairing, internal guidelines — whatever fits the org.
--->
+Now Q&A + let's look at some new storywise features!
