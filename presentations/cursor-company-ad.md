@@ -20,6 +20,8 @@ Goal: show what happened in our codebase, not slides from Cursor’s marketing.
 -->
 
 ---
+layout: intro
+---
 
 ## What this talk is
 
@@ -53,6 +55,10 @@ aber es wurde offenbar nicht die Einstellung aus dem Projekt verwendet.
 **TL;DR**: The export template feature does not work as expected.
 
 ---
+layout: image-right-wide-text
+image: /assets/pikachu.png
+backgroundSize: auto 35%
+---
 
 ## The Single Prompt that fixed the issue
 
@@ -62,13 +68,14 @@ aber es wurde offenbar nicht die Einstellung aus dem Projekt verwendet.
 this is the message from the client.
 
 @common/helper/export.template.helper.ts:15 
-it is probably due to this @common/helper/export.template.helper.ts:76-79 logic.
+it is probably due to this @common/helper/export.template.helper.ts:76-79
+logic.
 ```
 
-No magic, just the message + `@` file references + my suspicion.
+No magic, just the message + `@` file references + my guess.
 
 <!--
-Mention @-mentions if people haven’t used Cursor yet.
+Mention how @-mentions work.
 -->
 
 ---
@@ -103,7 +110,10 @@ Nullish coalescing: first non-nullish wins. Tenant "auto" was eating project tem
 | **Tests + PR** | ~30 minutes |
 
 **Takeaway:** Try it for buxfixing, it can save you a lot of time.
-
+---
+layout: image-right-wide-text
+image: /assets/what-simon-wrote.png
+backgroundSize: auto 45%
 ---
 
 # Story 2 — Epic list page size
@@ -122,11 +132,17 @@ I have this ticket:
 can you figure out whats wrong
 ```
 
+
+
 <!--
 Also good to figure out what Simon wrote
 -->
 
---- 
+---
+layout: image-right-wide-text
+image: /assets/my-lazy-ass.png
+backgroundSize: auto 75%
+---
 
 ## What was wrong
 
@@ -135,16 +151,26 @@ Also good to figure out what Simon wrote
 ### Also useful for a refactor
 
 ```
-@frontend/src/components/organisms/Lists/EntityPermissionList/EntityPermissionList.tsx:39-40 
+@frontend/src/.../EntityPermissionList.tsx:39-40 
 
-Why do we need to pass the pageSize everywhere. As we do it basically everywhere, can't we get it inside usePaginationPageSizeSetting and make it overwriteable?
-We could pass the userId or also get that one inside as it should only be used inside a page context...
+Why do we need to pass the pageSize everywhere. 
+As we do it basically everywhere, can't we get it inside 
+usePaginationPageSizeSetting and make it overwriteable?
+We could pass the userId or also get that one inside as it should 
+only be used inside a page context...
 ```
 
 One shotted as well, just had to fix a lint issue.
 
----
+<!--
+Just tell it: Change every instance of X into Y
+-->
 
+---
+layout: image-right-wide-text
+image: /assets/knowledge-base.png
+backgroundSize: 100% auto
+---
 # Story 3 — Knowledge base (Hard)
 
 A brand new feature for storywise, interacting with Confluence through APIs.
@@ -158,7 +184,10 @@ Requirements:
 
 Simon wanted to mock it, but ended up creating a draft PR for it.
 
-IMMAGINE DELLA KNOWLEDGE BASE
+---
+layout: image-right-wide-text
+image: /assets/simon-dump.png
+backgroundSize: 100% auto
 ---
 
 ## Did it succeed?
@@ -175,13 +204,12 @@ The code was mostly working, but it had some problems, like:
 It required a lot of work still, but it did save me a bunch of time, especially on the API side.
 
 
-IMMAGINE DI SIMON CHE MI SCARICA LA PR A ME
 
 <!--
 Nothing revolutionary, but still a faily big scope.
 -->
 
---- 
+---
 
 # How do we use it properly?
 
@@ -198,14 +226,16 @@ Nothing revolutionary, but still a faily big scope.
   It will accomplish the task (small or big), but likely not the way you want it.
 
   _Tip_: Use Plan mode! So you can see what components/libraries the model wants to use and you can iterate on it much more easily.
-
-  IMAGE OF PLAN MODE?
 </v-clicks>
 
 <!--
-Patterns and design system still need a human check.
+Explain what Plan mode is
 -->
 
+---
+layout: image-right-wide-text
+image: /assets/ie.png
+backgroundSize: 100% auto
 ---
 
 ## Other tips: Docs beat vague prompts
@@ -219,14 +249,14 @@ Giving the model **real material** (e.g. **Tenda AP** manuals / PDFs) works wond
 
 It can work but please don't.
 
-1 year ago is 10 years ago in AI-time.
-
-INTERNET EXPLORER MEME
+1 year ago in AI-time is ~5 years ago in conventional time.
 
 <!--
 Habits > unstructured prompting.
 -->
 
+---
+layout: end
 ---
 
 # Thanks!
