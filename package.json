@@ -3,8 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build:tutorial": "slidev build presentations/tutorial/slides.md -o dist --base /",
-    "build:cursor-ad": "slidev build presentations/cursor-ad/slides.md -o dist --base /",
+    "build": "slidev build presentations/cursor-ad/slides.md -o ../../dist --base /",
+    "build:tutorial": "slidev build presentations/tutorial/slides.md -o ../../dist --base /",
+    "build:cursor-ad": "slidev build presentations/cursor-ad/slides.md -o ../../dist --base /",
     "dev": "slidev slides.md --open",
     "dev:tutorial": "slidev presentations/tutorial/slides.md --open",
     "dev:cursor-ad": "slidev presentations/cursor-ad/slides.md --open",
