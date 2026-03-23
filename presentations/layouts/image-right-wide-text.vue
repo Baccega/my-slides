@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/// <reference types="vite/client" />
 import type { CSSProperties } from 'vue'
 import { computed } from 'vue'
 

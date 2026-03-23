@@ -62,7 +62,7 @@ backgroundSize: auto 35%
 
 ## The Single Prompt that fixed the issue
 
-```
+```text [Prompt] {1-3|5|6-7}
 <client message>
 
 this is the message from the client.
@@ -122,7 +122,7 @@ Another bug it one-shotted:
 
 Ticket: the page-size control on the epic list didn’t change how many rows actually loaded.
 
-```
+```text [Prompt] {1|3-5|7}
 on this component @frontend/src/components/molecules/TablePageButtons.tsx
 
 I have this ticket:
@@ -150,7 +150,7 @@ backgroundSize: auto 75%
 
 ### Also useful for a refactor
 
-```
+```text [Prompt]
 @frontend/src/.../EntityPermissionList.tsx:39-40 
 
 Why do we need to pass the pageSize everywhere. 
@@ -225,7 +225,7 @@ Nothing revolutionary, but still a faily big scope.
 
   It will accomplish the task (small or big), but likely not the way you want it.
 
-  _Tip_: Use Plan mode! So you can see what components/libraries the model wants to use and you can iterate on it much more easily.
+  _Tip_: <span v-mark="{ at: 4 }">Use Plan mode!</span> So you can see what components/libraries the model wants to use and you can iterate on it much more easily.
 </v-clicks>
 
 <!--
