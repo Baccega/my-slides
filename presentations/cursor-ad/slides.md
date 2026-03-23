@@ -1,4 +1,6 @@
 ---
+addons:
+  - ..
 theme: seriph
 title: Cursor — Examples from my storywise day-to-day
 info: |

@@ -3,15 +3,13 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "build:starter": "slidev build slides.md",
-    "build:cursor-ad": "slidev build presentations/cursor-company-ad.md",
+    "build:tutorial": "slidev build presentations/tutorial/slides.md -o dist --base /",
+    "build:cursor-ad": "slidev build presentations/cursor-ad/slides.md -o dist --base /",
     "dev": "slidev slides.md --open",
-    "dev:starter": "slidev slides.md --open",
-    "dev:cursor-ad": "slidev presentations/cursor-company-ad.md --open",
-    "export": "slidev export",
-    "export:starter": "slidev export slides.md",
-    "export:cursor-ad": "slidev export presentations/cursor-company-ad.md"
+    "dev:tutorial": "slidev presentations/tutorial/slides.md --open",
+    "dev:cursor-ad": "slidev presentations/cursor-ad/slides.md --open",
+    "export:tutorial": "slidev export presentations/tutorial/slides.md",
+    "export:cursor-ad": "slidev export presentations/cursor-ad/slides.md"
   },
   "dependencies": {
     "@slidev/cli": "^52.14.1",

@@ -1,22 +1,29 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# [Slidev](https://github.com/slidevjs/slidev) decks
 
 ## Setup
 
 - `pnpm install`
-- visit <http://localhost:3030> after starting a dev script
+- Develop: hub with `pnpm dev`, or a nested deck with `pnpm dev:tutorial` / `pnpm dev:cursor-ad`
 
-## Multiple presentations
+## Deploy (pick one deck)
 
-Each deck is its own Markdown entry under [`presentations/`](./presentations/).
+Each `build:*` writes a **standalone** site to `dist/` (root base `/`). Choose which deck to ship:
 
-| Command | Deck |
+| Script | Deck |
 |--------|------|
-| `pnpm dev` or `pnpm dev:starter` | [slides.md](./slides.md) (template / playground) |
-| `pnpm dev:cursor-ad` | [Cursor company ad](./presentations/cursor-company-ad.md) — internal pitch from real findings |
+| `pnpm build:tutorial` | Tutorial ([`presentations/tutorial/slides.md`](./presentations/tutorial/slides.md)) |
+| `pnpm build:cursor-ad` | Cursor talk ([`presentations/cursor-ad/slides.md`](./presentations/cursor-ad/slides.md)) |
 
-Build / PDF export:
+**Vercel / Netlify:** set the build command to `pnpm run build:tutorial` or `pnpm run build:cursor-ad` (defaults in [`vercel.json`](./vercel.json) and [`netlify.toml`](./netlify.toml) point at `build:tutorial`; change there when you switch decks).
 
-- `pnpm build:starter` / `pnpm build:cursor-ad`
-- `pnpm export:starter` / `pnpm export:cursor-ad`
+## Layout
 
-Learn more at the [Slidev documentation](https://sli.dev/).
+- **Hub** — root [`slides.md`](./slides.md) (optional; links assume separate routes if you host multiple decks).
+- **Shared** — [`components/`](./components/) and [`layouts/`](./layouts/) at the repo root; nested decks use `addons: [..]` in frontmatter.
+- **Per deck** — under [`presentations/<name>/`](./presentations/): `slides.md`, optional `pages/` and `snippets/`, static files in `public/` (e.g. `public/assets/` for `/assets/...` in frontmatter).
+
+## Export (PDF, etc.)
+
+- `pnpm export:tutorial` / `pnpm export:cursor-ad`
+
+More detail: [Slidev docs](https://sli.dev/).
